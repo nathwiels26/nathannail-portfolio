@@ -6,7 +6,7 @@ import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
 
 function AnimatedSphere() {
-  const sphereRef = useRef<any>();
+  const sphereRef = useRef<any>(null);
 
   useFrame((state) => {
     if (sphereRef.current) {

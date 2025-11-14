@@ -45,7 +45,7 @@ export default function OtherExperiences() {
     },
   ];
 
-  const experiences = [];
+  const experiences: any[] = [];
 
   return (
     <section
@@ -473,7 +473,7 @@ export default function OtherExperiences() {
 
                   {/* Skills Tags */}
                   <div className="flex flex-wrap gap-2">
-                    {experience.skills.map((skill, skillIndex) => (
+                    {experience.skills.map((skill: string, skillIndex: number) => (
                       <motion.span
                         key={skillIndex}
                         className="px-3 py-1 bg-white/80 dark:bg-gray-800/80 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"
