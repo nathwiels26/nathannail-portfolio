@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 9995;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6, #ec4899);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #7c3aed, #db2777);
+}
+
+/* Selection */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: inherit;
+}
+
+/* Smooth cursor for interactive elements */
+a, button {
+  cursor: pointer;
+}
+
+/* Smooth font rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force Mobile Layout */
+.force-mobile-layout {
+  max-width: 480px !important;
+  margin: 0 auto !important;
+}
+
+.force-mobile-layout * {
+  /* Override all responsive classes to mobile size */
+}
+
+/* Force mobile breakpoints */
+.force-mobile-layout .sm\:text-6xl,
+.force-mobile-layout .sm\:text-5xl,
+.force-mobile-layout .sm\:text-4xl,
+.force-mobile-layout .sm\:text-3xl,
+.force-mobile-layout .lg\:text-8xl,
+.force-mobile-layout .lg\:text-7xl {
+  font-size: inherit !important;
+}
+
+.force-mobile-layout .md\:flex-row {
+  flex-direction: column !important;
+}
+
+.force-mobile-layout .md\:grid-cols-2,
+.force-mobile-layout .lg\:grid-cols-2,
+.force-mobile-layout .md\:grid-cols-3,
+.force-mobile-layout .lg\:grid-cols-3,
+.force-mobile-layout .lg\:grid-cols-4 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.force-mobile-layout .md\:text-left {
+  text-align: center !important;
+}
+
+.force-mobile-layout .hidden.md\:flex,
+.force-mobile-layout .hidden.md\:block {
+  display: none !important;
+}
+
+.force-mobile-layout .md\:hidden {
+  display: flex !important;
+}
+
+/* Force Desktop Layout */
+.force-desktop-layout {
+  min-width: 1024px !important;
+}
+
+.force-desktop-layout .md\:hidden {
+  display: none !important;
+}
+
+.force-desktop-layout .hidden.md\:flex {
+  display: flex !important;
+}
+
+.force-desktop-layout .hidden.md\:block {
+  display: block !important;
+}
