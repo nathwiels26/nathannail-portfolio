@@ -1,14 +1,7 @@
 "use client";
 
-import { Monitor, Smartphone } from "lucide-react";
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const handleChangeView = () => {
-    localStorage.removeItem("devicePreference");
-    window.location.reload();
-  };
 
   return (
     <footer className="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8">
@@ -20,16 +13,6 @@ export default function Footer() {
               © {currentYear} Nathannail Wielianto. All rights reserved.
             </p>
           </div>
-
-          {/* Change View Button */}
-          <button
-            onClick={handleChangeView}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-gray-600"
-          >
-            <Monitor className="w-4 h-4" />
-            <Smartphone className="w-4 h-4" />
-            <span className="text-sm font-medium">Change View</span>
-          </button>
 
           {/* Social Links */}
           <div className="flex gap-6">
