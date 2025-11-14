@@ -7,7 +7,6 @@ import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowDown } from "react-ico
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
     <section
@@ -44,7 +43,7 @@ export default function Hero() {
 
       <motion.div
         className="max-w-7xl w-full relative z-10"
-        style={{ y, opacity }}
+        style={{ y }}
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-20">
           {/* Text Content */}
