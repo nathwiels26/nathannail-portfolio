@@ -209,6 +209,12 @@ export default function Projects() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
 
+  const getYouTubeEmbedUrl = (url: string) => {
+    // Convert YouTube watch URL to embed URL
+    const videoId = url.split('v=')[1] || url.split('/').pop();
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
+
   const openVideoModal = (videoUrl: string) => {
     setCurrentVideo(videoUrl);
     setIsVideoModalOpen(true);
@@ -226,9 +232,9 @@ export default function Projects() {
         "A comprehensive perfume information system with product management, real-time chat support, user authentication, and file upload capabilities. Built with modern full-stack technologies for seamless user experience.",
       technologies: ["Node.js", "Express", "MongoDB", "Socket.io", "EJS", "Multer"],
       image: "/project-parfum.png",
-      github: "https://github.com/nathannail/sistem-informasi-parfum",
+      github: "https://github.com/nathwiels26/sistem-informasi-parfum",
       demo: "#",
-      videoUrl: "/parfum-demo.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=8kGEzi2pxiY",
     },
   ];
 
@@ -328,15 +334,24 @@ export default function Projects() {
 
               {/* Video player */}
               <div className="relative aspect-video bg-black">
-                <video
-                  src={currentVideo}
-                  controls
-                  autoPlay
-                  className="w-full h-full"
-                  controlsList="nodownload"
-                >
-                  Your browser does not support the video tag.
-                </video>
+                {currentVideo.includes('youtube.com') || currentVideo.includes('youtu.be') ? (
+                  <iframe
+                    src={getYouTubeEmbedUrl(currentVideo)}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video
+                    src={currentVideo}
+                    controls
+                    autoPlay
+                    className="w-full h-full"
+                    controlsList="nodownload"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </div>
 
               {/* Video info */}
